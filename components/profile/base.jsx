@@ -8,12 +8,16 @@ var base = React.createClass({
 	componentDidMount: function() {
 		Advisor.actions.get(this.props.params.id)
 	},
+	modify : function(field, event) {
+		var value = event.target.innerHTML
+		Advisor.actions.modify(this.props.params.id, field, value)
+	},
 	render: function() {
 		var advisor = this.state.advisor.cache[this.props.params.id]
 		if (!advisor)
 			return false
 
-		var editable = true
+		var editable = advisor.id == "123" 
 		var cx = React.addons.classSet({
 			editable : editable,
 			profile : true,
@@ -26,7 +30,7 @@ var base = React.createClass({
 					<div className="wrap">
 						<img src={advisor.image || "https://images.blogthings.com/thecolorfulpatterntest/pattern-4.png"}/>
 						<h1>
-							<span contentEditable={editable} className="pencil">{advisor.name}</span>
+							<span onBlur={this.modify.bind(this, "name")} contentEditable={editable} className="pencil">{advisor.name}</span>
 						</h1>
 						<h2>{advisor.school[0].school}</h2>
 						<h3>{advisor.school[0].major}</h3>
@@ -38,11 +42,18 @@ var base = React.createClass({
 						<h1>Story</h1>
 						<div className="content">
 							<h2>About Me</h2>
-							<p contentEditable={editable} className="pencil">{advisor.story || "No description"}</p>
+							<p onBlur={this.modify.bind(this, "story")} contentEditable={editable} className="pencil">{advisor.story || "No description"}</p>
 							<h2 className="pencil">Timeline</h2>
 							<ul className="timeline">
 							{
-								advisor.school.concat(advisor.test).concat(advisor.employer).map(function(item) {
+
+								[]
+									.concat(advisor.school)
+									.concat(advisor.test)
+									.concat(advisor.employer)
+									.sort(function(a,b) {
+										return a.year<b.year?1:a.year>b.year?-1:0;
+									}).map(function(item) {
 									if (!item) 
 										return false
 									return (
@@ -51,6 +62,7 @@ var base = React.createClass({
 											<h3>{item.year}</h3>
 											<h1>{item.school || item.test || item.employer}</h1>
 											{item.gpa ? <h2>GPA: {item.gpa}</h2> : false}
+											{item.major ? <h2>{item.major}</h2> : false}
 											{item.score ? <h2>Score: {item.score}</h2> : false}
 											{item.position ? <h2>{item.position}</h2> : false}
 											<p>{item.description}</p>

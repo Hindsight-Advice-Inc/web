@@ -3,7 +3,8 @@ var Axios = require("axios")
 
 module.exports.actions = Reflux.createActions([
 	"search",
-	"get"
+	"get",
+	"modify"
 ])
 
 var data = { 
@@ -29,9 +30,17 @@ module.exports.store = Reflux.createStore({
 			self.trigger(data)
 		})
 	},
+	onModify : function(id, field, value) {
+		data.cache[id][field] = value
+		Axios.post("http://dashboard.hindsight.io/api/me/modify/" + field + "?session=123", {
+			data : value
+		}).then(function(response) {
+		})
+		this.trigger(data)
+	},
 	cache : function(arr) {
 		arr.forEach(function(advisor) {
-			data.cache[advisor.id] = advisor
+			data.cache[advisor.id + ""] = advisor
  		})
 		return arr
 	},
