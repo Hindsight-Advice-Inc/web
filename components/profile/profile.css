@@ -1,0 +1,149 @@
+section.profile {
+    display: flex;
+    align-items: flex-start;
+}
+section.profile .left {
+    margin-right: 40px;
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section.profile .wrap {
+    text-align: center;
+    width: 100%;
+    padding: 30px;
+    border-bottom: 1px solid #E7ECEF;
+    margin-bottom: 55px;
+}
+section.profile .left h1 {
+    font-weight: 500;
+    margin-top: 20px;
+    font-size: 1.2em;
+    margin-bottom: 4px;
+}
+section.profile .left h2 {
+    color: #1EAAF1;
+    margin-bottom: 4px;
+}
+section.profile .left h3 {
+    color: #8E8E8E;
+    font-size: 0.8em;
+}
+section.profile .left img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+section.profile .center {
+    flex-grow: 1;
+    margin-right: 0px;
+}
+section.profile .center .card > h1 {
+    font-size: 1.2em;
+    padding: 25px 30px;
+    font-weight: 600;
+    border-bottom: 1px solid #E7ECEF;
+}
+section.profile .center .card .content > h2 {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+section.profile .center .card .content {
+    padding: 30px;
+}
+section.profile .center .card p {
+    color: #8E8E8E;
+    font-size: 0.9em;
+    line-height: 2em;
+    margin-bottom: 30px;
+}
+.button {
+    padding: 8px 0px;
+    border: 1px solid;
+    letter-spacing: 1px;
+    border-radius: 100px;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #1EAAF1;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 110px;
+    text-align: center;
+}
+section.profile ul.timeline {
+    margin: 20px 0px;
+    padding-left: 30px;
+}
+section.profile ul.timeline h1 {
+    color: #1EAAF1;
+}
+section.profile ul.timeline h3 {
+    font-size: 0.8em;
+    margin-bottom: 2px;
+    color: #8E8E8E;
+}
+section.profile ul.timeline h2 {
+    font-weight: 400;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+section.profile ul.timeline li {
+    padding-left: 20px;
+    padding-bottom: 30px;
+    margin: 0px;
+    font-size: 1em;
+    border-left: 2px solid #D4D4D4;
+    position: relative;
+    margin-top: -4px;
+}
+section.profile ul.timeline li i {
+    display: block;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    left: -7px;
+    top: 0px;
+    border: 2px solid #D4D4D4;
+}
+section.profile .card ul.timeline li p {
+    margin-bottom: 0px;
+    line-height: 1.4em;
+    margin-top: 5px;
+    color: #8E8E8E;
+    max-width: 50%;
+}
+section.profile ul.skills {
+    margin: 20px 0px;
+    padding-left: 10px;
+}
+section.profile ul.skills li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+section.profile ul.skills li .count {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #191919;
+}
+section.profile ul.skills li h1 {
+    margin-left: 20px;
+    text-transform: capitalize;
+}
+section.profile.editable .pencil {
+    background-image: url(../../img/pencil.png);
+    padding-left: 30px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px;
+}
+section.profile.editable span.pencil {
+    margin-left: -30px;
+}

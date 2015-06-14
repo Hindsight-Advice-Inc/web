@@ -1,0 +1,15 @@
+section.input {
+    height: 60px;
+    border-bottom: 2px solid #E7ECEF;
+    background: white;
+    margin-top: -1px;
+    padding: 0px 40px;
+}
+section.input input {
+    background: transparent;
+    border: 0px;
+    flex-grow: 1;
+    font-size: 0.9em;
+    flex-grow: 1;
+    height: 100%;
+}
