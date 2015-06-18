@@ -1,9 +1,10 @@
-require("./search.css")
+require("search/search.css")
 var React = require("react");
 var Reflux = require("reflux")
-var Input = require("./input.jsx")
-var Filters = require("./filters.jsx")
-var AdvisorList = require("advisor-list/base.jsx")
+
+var Input = require("search/input")
+var Filters = require("search/filters")
+var AdvisorList = require("advisor-list")
 var Advisor = require("advisor")
 
 var base = React.createClass({

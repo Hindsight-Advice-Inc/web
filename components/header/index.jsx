@@ -10,6 +10,11 @@ var header = React.createClass({
 		return (
 			<header>
 				<div className="logo">Hindsight</div>
+				<nav>
+					<Link to="search">Search</Link>
+					<Link to="connections">Connections</Link>
+					<Link to="profile" params={{id : "123"}}>Profile</Link>
+				</nav>
 			</header>
 		);
 	}

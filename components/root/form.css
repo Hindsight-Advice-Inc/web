@@ -1,0 +1,32 @@
+form {
+    padding: 20px;
+    color: #8E8E8E;
+}
+form h2 {
+    font-size: 0.75em;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+    font-weight: 500;
+    margin-left: 2px;
+}
+form input, form select, form textarea {
+    border: 1px solid #E7ECEF;
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 10px;
+    color: #8E8E8E;
+    text-transform: capitalize;
+    max-width: 100%;
+}
+form textarea {
+    text-transform: initial;
+}
+form option {
+    text-transform: capitalize;
+}
+*:focus {
+    outline: 0;
+}
+form > *:last-child {
+    margin-bottom: 0px;
+}

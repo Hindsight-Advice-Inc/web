@@ -2,15 +2,19 @@ require("./profile.css")
 var React = require('react');
 var Reflux = require("reflux")
 var Advisor = require("advisor")
+var Request = require("request")
+var Timeline = require("profile/timeline")
+var TimelineEditor = require("timeline-editor")
 
 var base = React.createClass({
 	mixins : [Reflux.connect(Advisor.store, "advisor")],
+	getInitialState: function() {
+		return {
+			editor : false
+		};
+	},
 	componentDidMount: function() {
 		Advisor.actions.get(this.props.params.id)
-	},
-	modify : function(field, event) {
-		var value = event.target.innerHTML
-		Advisor.actions.modify(this.props.params.id, field, value)
 	},
 	render: function() {
 		var advisor = this.state.advisor.cache[this.props.params.id]
@@ -26,51 +30,26 @@ var base = React.createClass({
 
 		return (
 			<section className={cx}>
+				<TimelineEditor advisor={advisor} close={this.toggleEditor} active={this.state.editor}/>
 				<div className="left card">
 					<div className="wrap">
 						<img src={advisor.image || "https://images.blogthings.com/thecolorfulpatterntest/pattern-4.png"}/>
 						<h1>
 							<span onBlur={this.modify.bind(this, "name")} contentEditable={editable} className="pencil">{advisor.name}</span>
 						</h1>
-						<h2>{advisor.school[0].school}</h2>
-						<h3>{advisor.school[0].major}</h3>
-						<div className="button">Request</div>
+						<h2>{advisor.education.school}</h2>
+						<h3>{advisor.education.major}</h3>
+						<div onClick={Request.actions.target.bind(this, advisor)} className="button">Request</div>
 					</div>
 				</div>
 				<div className="center">
 					<div className="card">
 						<h1>Story</h1>
-						<div className="content">
+						<div className="pad">
 							<h2>About Me</h2>
 							<p onBlur={this.modify.bind(this, "story")} contentEditable={editable} className="pencil">{advisor.story || "No description"}</p>
-							<h2 className="pencil">Timeline</h2>
-							<ul className="timeline">
-							{
-
-								[]
-									.concat(advisor.school)
-									.concat(advisor.test)
-									.concat(advisor.employer)
-									.sort(function(a,b) {
-										return a.year<b.year?1:a.year>b.year?-1:0;
-									}).map(function(item) {
-									if (!item) 
-										return false
-									return (
-										<li key={item.id}>
-											<i />
-											<h3>{item.year}</h3>
-											<h1>{item.school || item.test || item.employer}</h1>
-											{item.gpa ? <h2>GPA: {item.gpa}</h2> : false}
-											{item.major ? <h2>{item.major}</h2> : false}
-											{item.score ? <h2>Score: {item.score}</h2> : false}
-											{item.position ? <h2>{item.position}</h2> : false}
-											<p>{item.description}</p>
-										</li>
-									)
-								})
-							}
-							</ul>
+							<h2 onClick={this.toggleEditor} className="pencil">Timeline</h2>
+							<Timeline  advisor={advisor} />
 							<h2>Skills</h2>
 							<ul className="skills">
 								<li>
@@ -91,7 +70,16 @@ var base = React.createClass({
 				</div>
 			</section>
 		);
-	}
+	},
+	toggleEditor : function() {
+		this.setState({
+			editor : !this.state.editor 
+		});
+	},
+	modify : function(field, event) {
+		var value = event.target.innerHTML
+		Advisor.actions.modify(this.props.params.id, field, value)
+	},
 
 });
 

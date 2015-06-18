@@ -1,6 +1,8 @@
 require("./advisor-list.css")
 var React = require('react')
+var Transition = React.addons.CSSTransitionGroup;
 var Link = require("react-router").Link
+var Request = require("request")
 
 var base = React.createClass({
 	componentWillMount: function() {
@@ -10,7 +12,7 @@ var base = React.createClass({
 		if(!this.props.advisors)
 			return false
 		return (
-			<ul className="advisor-list">
+			<Transition component="ul" transitionName="fade" transitionAppear={true} className="advisor-list">
 			{
 				this.props.advisors.map(function(advisor) {
 					return (
@@ -19,8 +21,8 @@ var base = React.createClass({
 								<img src={advisor.image || "https://images.blogthings.com/thecolorfulpatterntest/pattern-4.png"} />
 								<div className="details">
 									<h1>{advisor.name}</h1>
-									<h2>{advisor.school[0].school}</h2>
-									<h3>{advisor.school[0].major}</h3>
+									<h2>{advisor.education.school}</h2>
+									<h3>{advisor.education.major}</h3>
 								</div>
 								<ul className="stats">
 								{
@@ -37,13 +39,13 @@ var base = React.createClass({
 							</div>
 							<div className="toolbar">
 								<Link params={{id : advisor.id}} className="profile" to="profile" />
-								<a></a>
+								<a onClick={Request.actions.target.bind(this, advisor)}></a>
 							</div>
 						</li>
 					)
 				})
 			}
-			</ul>
+			</Transition>
 		);
 	}
 });

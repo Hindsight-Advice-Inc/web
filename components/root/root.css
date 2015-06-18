@@ -6,9 +6,10 @@ input:focus, select:focus {
 }
 a {
     text-decoration: none;
+    color: inherit;
 }
 body {
-    background: #F5F8F9;
+    background: #F4F5F6;
     font-family: "Roboto";
     color: #181818;
 }
@@ -18,9 +19,23 @@ section.root {
     left: 0px;
     bottom: 0px;
     right: 0px;
+    overflow-y: scroll;
 }
 .content {
     padding: 40px;
+    width: 1200px;
+    margin: 0 auto;
+}
+.content > .grid {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    margin-top: -15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.content > .grid > * {
+    width: calc(33.3333333% - 30px);
+    margin: 15px;
 }
 .card {
     background: white;

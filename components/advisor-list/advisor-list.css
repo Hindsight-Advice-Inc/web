@@ -83,6 +83,10 @@ ul.advisor-list {
     background-position: center;
     cursor: pointer;
 }
+.card .toolbar a.cancel {
+    background-image: url(http://cdn.flaticon.com/png/256/67345.png);
+    background-size: 20%;
+}
 .card .toolbar a.profile {
     background-image: url(http://cdn.flaticon.com/png/256/66938.png);
 }

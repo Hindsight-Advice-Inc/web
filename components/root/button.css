@@ -1,0 +1,40 @@
+.button {
+    line-height: initial;
+    padding: 8px 0px;
+    border: 2px solid;
+    letter-spacing: 1px;
+    border-radius: 100px;
+    display: inline-block;
+    font-weight: 400;
+    color: #1EAAF1;
+    border-color: #1EAAF1;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 110px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7em;
+}
+.loading .button {
+    width: 33px;
+    color: rgba(0, 0, 0, 0);
+    transition: 500ms width 200ms, 200ms color, 500ms border-color;
+    animation: flicker 1s infinite 600ms;
+}
+.success .button {
+    transition: 500ms color 200ms, 200ms width, 500ms border-color;
+    border-color: green;
+    color: green;
+}
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

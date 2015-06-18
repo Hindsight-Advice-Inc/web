@@ -15,16 +15,15 @@ section.profile .wrap {
     padding: 30px;
     border-bottom: 1px solid #E7ECEF;
     margin-bottom: 55px;
+    line-height: 1.4em;
 }
 section.profile .left h1 {
     font-weight: 500;
-    margin-top: 20px;
+    margin-top: 18px;
     font-size: 1.2em;
-    margin-bottom: 4px;
 }
 section.profile .left h2 {
     color: #1EAAF1;
-    margin-bottom: 4px;
 }
 section.profile .left h3 {
     color: #8E8E8E;
@@ -36,8 +35,8 @@ section.profile .left img {
     border-radius: 50%;
 }
 section.profile .center {
-    flex-grow: 1;
     margin-right: 0px;
+    width: 100%;
 }
 section.profile .center .card > h1 {
     font-size: 1.2em;
@@ -45,11 +44,11 @@ section.profile .center .card > h1 {
     font-weight: 600;
     border-bottom: 1px solid #E7ECEF;
 }
-section.profile .center .card .content > h2 {
+section.profile .center .card .pad > h2 {
     font-weight: 500;
     margin-bottom: 5px;
 }
-section.profile .center .card .content {
+section.profile .center .card .pad {
     padding: 30px;
 }
 section.profile .center .card p {
@@ -58,61 +57,27 @@ section.profile .center .card p {
     line-height: 2em;
     margin-bottom: 30px;
 }
-.button {
-    padding: 8px 0px;
-    border: 1px solid;
-    letter-spacing: 1px;
-    border-radius: 100px;
-    display: inline-block;
-    font-size: 0.8em;
-    font-weight: 400;
-    color: #1EAAF1;
-    margin-top: 15px;
-    cursor: pointer;
-    width: 110px;
-    text-align: center;
+section.profile.editable .left .button {
+    display: none;
 }
-section.profile ul.timeline {
-    margin: 20px 0px;
+section.profile .pencil {
+    pointer-events: none;
+}
+section.profile.editable .pencil {
+    pointer-events: initial;
+    background-image: url(../../img/pencil.png);
     padding-left: 30px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px;
+    cursor: pointer;
 }
-section.profile ul.timeline h1 {
-    color: #1EAAF1;
-}
-section.profile ul.timeline h3 {
-    font-size: 0.8em;
-    margin-bottom: 2px;
-    color: #8E8E8E;
-}
-section.profile ul.timeline h2 {
-    font-weight: 400;
-    font-size: 0.9em;
-    margin-top: 4px;
-}
-section.profile ul.timeline li {
-    padding-left: 20px;
-    padding-bottom: 30px;
-    margin: 0px;
-    font-size: 1em;
-    border-left: 2px solid #D4D4D4;
-    position: relative;
-    margin-top: -4px;
-}
-section.profile ul.timeline li i {
-    display: block;
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    border-radius: 50%;
-    left: -7px;
-    top: 0px;
-    border: 2px solid #D4D4D4;
+section.profile.editable span.pencil {
+    margin-left: -30px;
 }
 section.profile .card ul.timeline li p {
     margin-bottom: 0px;
     line-height: 1.4em;
-    margin-top: 5px;
     color: #8E8E8E;
     max-width: 50%;
 }
@@ -137,13 +102,6 @@ section.profile ul.skills li h1 {
     margin-left: 20px;
     text-transform: capitalize;
 }
-section.profile.editable .pencil {
-    background-image: url(../../img/pencil.png);
-    padding-left: 30px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 15px;
-}
-section.profile.editable span.pencil {
-    margin-left: -30px;
+section.profile .card {
+    margin-bottom: 0px;
 }
